@@ -9,6 +9,22 @@
 linux에 **crontab**을 이용하여 **netcheck**코드를 주기적으로 실행시켜 네트워크에 문제가 생겼을 시 디스코드 웹훅을 통해 알람이 오게 설정합니다.
 그리고 **discordhook**를 통해 일정시간마다 서버가 정상적임을 알립니다.
 
+## 서버 설정
+2개의 ssh파일에 검사할 ip와 포트를 입력 받습니다.
+```json
+json_data='[
+  {"ip": "", "port": "","id": ""},
+  {"ip": "", "port": "","id": ""},
+  {"ip": "", "port": "","id": ""},
+  {"ip": "", "port": "","id": ""},
+  {"ip": "", "port": "","id": ""}
+]'
+
+ip -> 확인할 컴퓨터 주소
+port -> 할당한 포트
+id -> 서버 이름 입력
+```
+
 ## crontab 설치
 crontab은 대부분의경우 우분투에 기본적으로 설치되어있습니다. 혹시 설치가 되어있지 않은경우는
 <br>
@@ -43,17 +59,3 @@ crontab -e
 # 매 10분마다 디렉토리 파일실행
 */5 * * * *  Your Working Directory
 ```
-<details>
-<summary><h2>crontab 설정 예시이미지</h2></summary>
-<div markdown="1">
- <img width="550" alt="스크린샷 2024-04-09 오후 3 33 51" src="https://github.com/D-Cloude/NetHealthCheck/assets/95969488/a84770ca-0e3f-4edf-a86d-2d8260391036">
-</div>
-</details>
-
-<details>
-<summary><h2>discord 실행 예시이미지</h2></summary>
-<div markdown="1">
-  <img width="378" alt="스크린샷 2024-04-08 오후 7 33 41" src="https://github.com/D-Cloude/NetHealthCheck/assets/95969488/4fa81acb-222d-47af-bc04-8712c183b9c0">
-</div>
-</details>
-# NetHealthCheck
