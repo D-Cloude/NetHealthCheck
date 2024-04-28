@@ -24,7 +24,11 @@ ip -> 확인할 컴퓨터 주소
 port -> 할당한 포트
 id -> 서버 이름 입력
 ```
-
+또 파일에 후크 주소를 넣어주세요.
+```
+# Discord 웹훅 URL 정의
+DISCORD_WEBHOOK_URL=""
+```
 ## crontab 설치
 crontab은 대부분의경우 우분투에 기본적으로 설치되어있습니다. 혹시 설치가 되어있지 않은경우는
 <br>
@@ -36,13 +40,14 @@ sudo apt install -y cron
 sudo service cron start
 sudo systemctl enable cron.service
 ```
-
 ## crontab 설정하는법
 ```
 # Crontab 편집
+```
 crontab -e
 ```
 
+```
 ```
 # 매분 디렉토리 파일실행
 * * * * * /Your Working Directory
