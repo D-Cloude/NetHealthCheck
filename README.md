@@ -5,6 +5,9 @@
 ## 기능
 서버 보안상 외부로부터 핑이 차단되었을 때 디스코드를 통해 간단하게 서버 헬스체크를 하는 코드입니다.
 
+## 원리
+자신이 설정해논 포트에서 SSH이나 웹 같은 서버가 살아있다는 신호가 들어오면 서버가 살아있다는 것으로 증명하고 서버가 정상인 알림을 보내고
+아닐경우 서버에 오류가 있다고 메세지를 보냄니다.
 ## 사용법
 linux에 **crontab**을 이용하여 **netcheck**코드를 주기적으로 실행시켜 네트워크에 문제가 생겼을 시 디스코드 웹훅을 통해 알람이 오게 설정합니다.
 그리고 **discordhook**를 통해 일정시간마다 서버가 정상적임을 알립니다.
@@ -29,38 +32,26 @@ id -> 서버 이름 입력
 # Discord 웹훅 URL 정의
 DISCORD_WEBHOOK_URL=""
 ```
-## crontab 설치
-crontab은 대부분의경우 우분투에 기본적으로 설치되어있습니다. 혹시 설치가 되어있지 않은경우는
-<br>
-아래코드를 터미널에서 순차적으로 입력해줍니다.
-```
-sudo apt-get install yum
-sudo apt update -y
-sudo apt install -y cron
-sudo service cron start
-sudo systemctl enable cron.service
-```
-## crontab 설정하는법
-```
-# Crontab 편집
-```
-crontab -e
+
+## 계속 확인하게 하는방법
+### node.js 설치
+pm2와 제가 사용한 것들은 node.js기반으로 하기 때문에 서버에 설치해야합니다.
+```bash
+curl -sL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs
 ```
 
+### 패키지 설치
 ```
+npm i 
 ```
-# 매분 디렉토리 파일실행
-* * * * * /Your Working Directory
 
-# 매주 일요일 오전 4시 44분에 디렉토리 파일실행
-44 4 * * 7 /Your Working Directory
+### pm2 설치
+```
+npm i  -g pm2
+```
 
-# 매시간 47분에 디렉토리 파일실행
-47 * * * * /Your Working Directory
-
-# 매일 2시 0분부터 47분까지 매분 디렉토리 파일실행
-0-47 2 * * * Your Working Directory
-
-# 매 10분마다 디렉토리 파일실행
-*/5 * * * *  Your Working Directory
+### 앱 실행
+```
+pm2 start app.js
 ```
