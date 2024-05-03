@@ -55,3 +55,24 @@ npm i  -g pm2
 ```
 pm2 start app.js
 ```
+
+## 반복되는 시간 조정하는 방법
+app.js에 아래와 같은 부분을 수정하면 됨니다.
+
+```js
+ schedule.scheduleJob('*/10 * * * *', function(){
+```
+cron기반으로 설정되기 때문에 아래를 참조해서 작성하시면 편합니다.
+
+
+```
+# ┌───────────── minute (0 - 59)
+# │ ┌───────────── hour (0 - 23)
+# │ │ ┌───────────── day of the month (1 - 31)
+# │ │ │ ┌───────────── month (1 - 12)
+# │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday)
+# │ │ │ │ │
+# │ │ │ │ │
+# │ │ │ │ │
+# * * * * * <command to execute>
+```

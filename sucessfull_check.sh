@@ -35,19 +35,6 @@ jq -c '.[]' <<< "$json_data" | while IFS= read -r json_obj; do
       "$DISCORD_WEBHOOK_URL"
   }
 
-  # # 실패 메시지 함수
-  # faild_message() {
-  #   curl -X POST \
-  #     -H "Content-Type: application/json" \
-  #     -d '{
-  #           "embeds": [{
-  #             "title": "서버에 문제가 발생 했습니다.",
-  #             "description": "'"$CURRENT_TIME"'\nIP: '"$ip\nport:$port\nServer Name: $id"'",
-  #             "color": 16711680
-  #           }]
-  #         }' \
-  #     "$DISCORD_WEBHOOK_URL"
-  # }
 
   # 서버 연결 시도 및 메시지 전송
   if nc -zvw1 "$ip" "$port" &> /dev/null; then

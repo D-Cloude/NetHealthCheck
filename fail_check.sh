@@ -21,20 +21,6 @@ jq -c '.[]' <<< "$json_data" | while IFS= read -r json_obj; do
   # 현재 시간
   CURRENT_TIME=$(TZ=Asia/Seoul date "+%Y-%m-%d-%H:%M:%S")
 
-  # # 성공 메시지 함수
-  # succesfull_message() {
-  #   curl -X POST \
-  #     -H "Content-Type: application/json" \
-  #     -d '{
-  #           "embeds": [{
-  #             "title": "서버가 정상적으로 작동하고 있습니다.",
-  #             "description": "'"$CURRENT_TIME"'\nIP: '"$ip\nport:$port\nServer Name: $id"'",
-  #             "color": 65280
-  #           }]
-  #         }' \
-  #     "$DISCORD_WEBHOOK_URL"
-  # }
-
   # 실패 메시지 함수
   faild_message() {
     curl -X POST \
